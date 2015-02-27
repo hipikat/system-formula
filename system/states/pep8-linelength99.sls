@@ -10,4 +10,4 @@
     - pattern: MAX_LINE_LENGTH =.*
     - repl: MAX_LINE_LENGTH = 99
     - backup: False
-    - onlyif: -f /usr/local/lib/python2.7/dist-packages/pep8.py
+    - onlyif: test -f /usr/local/lib/python2.7/dist-packages/pep8.py
