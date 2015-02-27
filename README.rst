@@ -1,8 +1,8 @@
-******************
-Git-Server Formula
-******************
+**************
+System Formula
+**************
 
-A collection of system formulas.
+A collection of system-level formulas for Salt.
 
 `system.all`_
   Include all the following states.
