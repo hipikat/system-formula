@@ -22,7 +22,7 @@ States
   Set the system timezone to UTC and the named timezone in
   ``pillar['settings']['system_timezone']``.
 
-.. _system.all: https://github.com/hipikat/system-formula/blob/master/system/all.sls
+.. _system.all_states: https://github.com/hipikat/system-formula/blob/master/system/all_states.sls
 .. _system.states.default_user_umask: https://github.com/hipikat/system-formula/blob/master/system/states/default_user_umask.sls
 .. _system.states.packages: https://github.com/hipikat/system-formula/blob/master/system/states/packages.sls
 .. _system.states.timezone: https://github.com/hipikat/system-formula/blob/master/system/states/timezone.sls
