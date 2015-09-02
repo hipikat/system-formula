@@ -1,6 +1,43 @@
 #!stateconf -o yaml . jinja
 #
-# System-wide packages to be installed
+# System-wide packages to be installed. System packages without named
+# arguments are installed in a single state via the `pkg.installed`
+# state's `pkgs` argument. Arguments on a package are passed to the
+# `pkg.installed` state verbatim. Python packages are installed with
+# the system `pip` command, which is installed as needed.
+#
+# Pillar examples... ::
+#
+#     system_packages:
+#       - git
+#       - curl
+#       - zangband:
+#           hold: True
+#
+#     system_python_packages:
+#       - virtualenvwrapper
+#
+# Resulting states... ::
+#
+#     system.states.packages:Install system packages from pillar 'system_packages':
+#       pkg.installed:
+#         - pkgs:
+#           - git
+#           - curl
+#
+#     system.states.packages:Install system package 'zangband' from pillar 'system_packages':
+#       pkg.installed:
+#         - name: zangband
+#         - hold: True
+#
+#     system.states.packages:Install system-Python 'python-pip' package:
+#       pkg.installed:
+#         - name: python-pip
+#
+#     system.states.packages:Install 'zangband' in system-Python:
+#       pip.installed:
+#         - name: virtualenvwrapper
+#
 ########################################################################
 
 
@@ -49,12 +86,12 @@
 # System-Python packages
 {% if 'system_python_packages' in pillar %}
 
-.Install system-Python Pip package:
+.Install system-Python 'python-pip' package:
   pkg.installed:
     - name: python-pip
 
 {% for py_pkg in pillar['system_python_packages'] %}
-.Install {{ py_pkg }} in system-Python: 
+.Install '{{ py_pkg }}' in system-Python: 
   pip.installed:
     - name: {{ py_pkg }}
 {% endfor %}
