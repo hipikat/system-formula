@@ -33,4 +33,4 @@ System patches
 `system.patches.pep8-linelength99`_
   Change the ``MAX_LINE_LENGTH`` for Python source defined in ``pep8.py``.
 
-.. _system.states.pep8-linelength99: https://github.com/hipikat/system-formula/blob/master/system/patches/pep8-linelength99.sls
+.. _system.patches.pep8-linelength99: https://github.com/hipikat/system-formula/blob/master/system/patches/pep8-linelength99.sls
