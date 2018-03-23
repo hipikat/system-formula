@@ -4,7 +4,7 @@
 # arguments are installed in a single state via the `pkg.installed`
 # state's `pkgs` argument. Arguments on a package are passed to the
 # `pkg.installed` state verbatim. Python packages are installed with
-# the system `pip` command, which is installed as needed.
+# the system `pip` command, which is also installed if not present.
 #
 # Pillar examples... ::
 #
@@ -19,22 +19,22 @@
 #
 # Resulting states... ::
 #
-#     system.states.packages:Install system packages from pillar 'system_packages':
+#     system.state.packages:Install system packages from pillar 'system_packages':
 #       pkg.installed:
 #         - pkgs:
 #           - git
 #           - curl
 #
-#     system.states.packages:Install system package 'zangband' from pillar 'system_packages':
+#     system.state.packages:Install system package 'zangband' from pillar 'system_packages':
 #       pkg.installed:
 #         - name: zangband
 #         - hold: True
 #
-#     system.states.packages:Install system-Python 'python-pip' package:
+#     system.state.packages:Install system-Python 'python-pip' package:
 #       pkg.installed:
 #         - name: python-pip
 #
-#     system.states.packages:Install 'zangband' in system-Python:
+#     system.state.packages:Install 'zangband' in system-Python:
 #       pip.installed:
 #         - name: virtualenvwrapper
 #
