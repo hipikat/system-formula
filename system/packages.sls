@@ -49,8 +49,8 @@
 .Install Personal Package Archive '{{ ppa_name }}':
   pkgrepo.managed:
     - humanname: {{ ppa_name }}
-    - name: {{ ppa_details['name'] }}
-    #- ppa: {# ppa_details['ppa'] #}
+    #- name: {# ppa_details['name'] #}
+    - ppa: {{ ppa_details['ppa'] }}
     - refresh: True
 
   {% endfor %}
