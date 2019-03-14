@@ -5,13 +5,13 @@
 # `fallocate` command, or `0` to remove an existing swapfile.
 ########################################################################
 
-{% if 'swapfile' in pillar %}
+{% if 'system' in pillar and 'swapfile' in pillar['system'] %}
 
-  {% if pillar['swapfile'] != '0' %}
-.Create {{ pillar['swapfile'] }} swap file at /.swapfile:
+  {% if pillar['system']['swapfile'] != '0' %}
+.Create {{ pillar['system']['swapfile'] }} swap file at /.swapfile:
   cmd.run:
     - name: |
-        [ -f /.swapfile ] || fallocate -l {{ pillar['swapfile'] }} /.swapfile
+        [ -f /.swapfile ] || fallocate -l {{ pillar['system']['swapfile'] }} /.swapfile
         chmod 0600 /.swapfile
         mkswap /.swapfile
         echo '/.swapfile      none      swap     sw       0       0' >> /etc/fstab
